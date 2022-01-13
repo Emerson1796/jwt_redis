@@ -21,7 +21,7 @@ module.exports = lista => {
       return resultado === 1
     },
 
-    async contemChave(chave) {
+    async deleta(chave) {
       await delAsync(chave)
     }
   }

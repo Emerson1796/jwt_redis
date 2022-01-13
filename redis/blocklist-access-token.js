@@ -3,10 +3,6 @@ const blocklist = redis.createClient({ prefix: 'blocklist-access-token:' })
 const manipulaLista = require('./manipula-lista')
 const manipulaBlocklist = manipulaLista(blocklist)
 
-const { promisify } = require('util')
-const existsAsync = promisify(blocklist.exists).bind(blocklist)
-const setAsync = promisify(blocklist.set).bind(blocklist)
-
 const jwt = require('jsonwebtoken')
 const { createHash } = require('crypto')
 
@@ -23,5 +19,5 @@ module.exports = {
   async contemToken(token) {
     const tokenHash = geraTokenHash(token)
     return manipulaBlocklist.contemChave(tokenHash)
-  }
+  },
 }
