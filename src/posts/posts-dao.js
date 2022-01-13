@@ -1,9 +1,9 @@
-const db = require('../../database');
-const { InternalServerError } = require('../erros');
+const db = require('../../database')
+const { InternalServerError } = require('../erros')
 
-const { promisify } = require('util');
-const dbRun = promisify(db.run).bind(db);
-const dbAll = promisify(db.all).bind(db);
+const { promisify } = require('util')
+const dbRun = promisify(db.run).bind(db)
+const dbAll = promisify(db.all).bind(db)
 
 module.exports = {
   async adiciona(post) {
@@ -11,17 +11,17 @@ module.exports = {
       await dbRun(`INSERT INTO posts (titulo, conteudo) VALUES (?, ?)`, [
         post.titulo,
         post.conteudo
-      ]);
+      ])
     } catch (erro) {
-      throw new InternalServerError('Erro ao adicionar o post!');
+      throw new InternalServerError('Erro ao adicionar o post!')
     }
   },
 
   async lista() {
     try {
-      return await dbAll(`SELECT * FROM posts`);
+      return await dbAll(`SELECT * FROM posts`)
     } catch (erro) {
-      throw new InternalServerError('Erro ao listar os posts!');
+      throw new InternalServerError('Erro ao listar os posts!')
     }
   }
-};
+}

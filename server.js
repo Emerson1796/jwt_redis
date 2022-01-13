@@ -1,11 +1,12 @@
 require('dotenv').config()
 
-const app = require('./app');
-const port = 3000;
-require('./database');
-require('./redis/blocklist');
+const app = require('./app')
+const port = 3000
+require('./database')
+require('./redis/blocklist-access-token')
+require('./redis/allow-list-refresh-token')
 
-const routes = require('./rotas');
-routes(app);
+const routes = require('./rotas')
+routes(app)
 
-app.listen(port);
+app.listen(port)

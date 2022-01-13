@@ -1,5 +1,5 @@
-const postsControlador = require('./posts-controlador');
-const { middlewaresAutenticacao } = require('../usuarios');
+const postsControlador = require('./posts-controlador')
+const { middlewaresAutenticacao } = require('../usuarios')
 
 module.exports = app => {
   app
@@ -8,5 +8,5 @@ module.exports = app => {
     .post(
       middlewaresAutenticacao.bearer,
       postsControlador.adiciona
-    );
-};
+    )
+}
